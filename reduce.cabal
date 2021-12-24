@@ -1,0 +1,33 @@
+name:                reduce
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/bhurt/reduce#readme
+license:             BSD2
+license-file:        LICENSE
+author:              Brian Hurt
+maintainer:          bhurt42@gmail.com
+copyright:           BSD
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+Flag Devel
+    Description:    Turn on -Wall -Werror for development
+    Default:        False
+
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Data.Reduce
+  build-depends:       base >= 4.7 && < 5
+  default-language:    Haskell2010
+  if flag(devel)
+    ghc-options:       -Wall -Werror -Werror -Wincomplete-uni-patterns -Wincomplete-record-updates -O1
+  else
+    ghc-options:       -O2
+
+source-repository head
+  type:     git
+  location: https://github.com/bhurt/reduce
