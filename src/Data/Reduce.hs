@@ -115,19 +115,19 @@
 --
 -- = To Be More Precise
 --
--- The "size" of a value is the number of calls to 'mconcat' to
--- create that value.  Note that calling 'mconcat' with 'mempty'
+-- The "size" of a value is the number of calls to 'mappend' to
+-- create that value.  Note that calling 'mappend' with 'mempty'
 -- as an argument still increases the size of that value by 1,
 -- even though the value doesn't change (due to the monoid laws).
 --
--- A call to mconcat is "balanced" if the size of either argument
--- is not larger than 2x+1 the size of the other.
+-- A call to mappend is "balanced" if the size of either argument
+-- is not larger than 3x+1 the size of the other.
 --
--- If all calls to mconcat in a fold are balanced, then the fold
+-- If all calls to mappend in a fold are balanced, then the fold
 -- itself if balanced.
 --
 -- So the `Data.Foldable.fold` function is not a balanced fold,
--- because with an N-element container where N > 2, it will mconcat
+-- because with an N-element container where N > 2, it will mappend
 -- a size 0 value (the first value) with a size N-1 value (the
 -- concatation of the rest of the values).
 --
